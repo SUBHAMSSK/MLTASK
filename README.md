@@ -106,6 +106,5 @@ Despite Naive Bayes having a higher accuracy, Logistic Regression was chosen for
 
 ---
 
-Feel free to reach out for questions or improvements!
 
 
