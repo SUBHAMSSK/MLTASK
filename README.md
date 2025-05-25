@@ -1,50 +1,52 @@
 # 🧠 ML Task 1 – Romantic Relationship Prediction (Coding Club)
 
 ## 📌 Objective
-The goal of this project is to perform **Exploratory Data Analysis (EDA)** on a student dataset, clean it, and train appropriate models to **predict whether a student is in a romantic relationship**.
+The aim of this project is to perform **Exploratory Data Analysis (EDA)** on a student dataset, clean it thoroughly, and train machine learning models to **predict whether a student is in a romantic relationship**.
 
 ---
 
 ## 🧼 Data Cleaning
-- Checked for missing/null values across all columns.
+- Checked for missing/null values in all columns.
 - Imputed missing values using:
-  - **Mean/Median** for normally distributed columns.
+  - **Mean/Median** for numerical columns with normal distribution.
   - **Mode** for categorical columns.
-  - **Relationship-based filling** for highly correlated features.
-  
+  - **Relationship-based imputation** for features showing strong correlations.
+
 ---
 
 ## 🔍 Feature Analysis (Feature_1, Feature_2, Feature_3)
-- Used `describe()` to get statistical insights (mean, median, min, max).
-- Visualized correlations of these features with variables like:
-  - **absences**, **health**, **alcohol use (Dalc)**, **goout**, **freetime**
-- Plotted:
+- Used `describe()` for statistical summaries (mean, median, min, max).
+- Analyzed correlations between features and variables such as:
+  - **absences**, **health**, **daily alcohol consumption (Dalc)**, **going out frequency (goout)**, **free time**
+- Visualized data with:
   - **Boxplots**
   - **Stacked bar charts**
   - **Countplots**
-- Inferred the nature of the unknown features based on patterns and distributions.
+- Deduced the nature and influence of the unknown features based on observed patterns.
 
 ---
 
 ## ❓ Insightful Questions Answered
 1. **How does parental education affect student performance?**
-2. **Do urban vs rural students differ in performance and facilities?**
-3. **Gender distribution among students in romantic relationships?**
-4. **Comparison of grades between students in and not in romantic relationships.**
-5. **Alcohol consumption patterns in romantic vs non-romantic students.**
+2. **Do students from urban areas differ from rural students in performance and facilities?**
+3. **How does parental separation affect students?**
+
+5. **How do grades compare between students in and not in romantic relationships?**
+6. **What are the alcohol consumption patterns in romantic versus non-romantic students?**
 
 ---
 
 ## 🤖 Model Training
 
 ### 🔧 Preprocessing
-- Converted `romantic` to binary (`yes` → 1, `no` → 0).
-- One-hot encoded all categorical features.
-- Removed low-correlation features.
-- Applied `StandardScaler` to normalize numeric features.
-- Tuned models using `GridSearchCV`.
+- Converted `romantic` column to binary values (`yes` → 1, `no` → 0).
+- One-hot encoded categorical variables.
+- Removed features with low correlation to the target variable.
+- Normalized numerical features using `StandardScaler`.
+- Used `GridSearchCV` for hyperparameter tuning.
 
-### 🧪 Models Used
+### 🧪 Models Used and Performance
+
 - **Naive Bayes Classifier**
   - Accuracy: ~70%
   - Confusion Matrix:
@@ -53,53 +55,57 @@ The goal of this project is to perform **Exploratory Data Analysis (EDA)** on a 
      [30 18]]
     ```
   - Precision:
-    - Yes: 67%
-    - No: 71%
+    - Romantic = Yes: 67%
+    - Romantic = No: 71%
 
 - **Logistic Regression**
   - Accuracy: ~62%
   - Precision:
-    - Yes: 49%
-    - No: 75%
+    - Romantic = Yes: 49%
+    - Romantic = No: 75%
 
 - **Random Forest Classifier**
   - Accuracy: ~62%
   - Precision:
-    - Yes: 47%
-    - No: 67%
+    - Romantic = Yes: 47%
+    - Romantic = No: 67%
 
-💡 **Chose Logistic Regression** for its better interpretability with SHAP.
-
----
-
-## 🔍 SHAP Interpretability
-
-- Used **SHAP Beeswarm Plot** to identify global feature importance.
-- Plotted **decision boundary** using `Feature_1 (age)` and `absences`.
-- Generated **local explanations** for:
-  - A student predicted as **Yes (in a relationship)**.
-  - A student predicted as **No (not in a relationship)**.
-
-These visualizations provided clear, interpretable reasons for the model’s predictions.
+💡 **Selected Model: Logistic Regression**  
+Despite Naive Bayes having a higher accuracy, Logistic Regression was chosen for its interpretability and balanced precision on class labels.
 
 ---
 
-## 📁 Files Overview
-
-| File / Folder       | Description                                 |
-|---------------------|---------------------------------------------|
-|        | Jupyter notebooks for EDA and model building |
-|          | Plots generated for analysis and SHAP       |
-| `       | Trained models and evaluation reports       |
-| `README.md`         | This documentation                         |
+## 🔍 Model Interpretation
+- Used **SHAP** (SHapley Additive exPlanations) to interpret model predictions.
+- Gained insights on feature importance and their effects on prediction confidence.
 
 ---
 
-## ✅ Conclusion
-This project showcases how to:
-- Clean and explore data effectively.
-- Formulate and answer meaningful questions using visualizations.
-- Train and compare classification models.
-- Use SHAP to interpret ML model predictions with confidence.
+## 📦 Package Versions Used
+- pandas: 2.2.3
+- numpy: 1.26.4
+- matplotlib: 3.7.2
+- seaborn: 0.12.2
+- shap: 0.44.1
 
 ---
+
+## 📖 How to Run
+1. Install required packages (versions noted above).
+2. Load the dataset.
+3. Perform EDA and data cleaning as described.
+4. Train models and evaluate performance.
+5. Use SHAP for model interpretation.
+
+---
+
+## 📝 Notes
+- Focus was on thorough exploratory analysis before modeling.
+- Model selection prioritized interpretability alongside accuracy.
+- Parental status and alcohol consumption emerged as important factors.
+
+---
+
+Feel free to reach out for questions or improvements!
+
+
